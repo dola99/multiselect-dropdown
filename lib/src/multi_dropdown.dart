@@ -404,9 +404,6 @@ class _MultiDropdownState<T extends Object> extends State<MultiDropdown<T>> {
                 renderBoxOffset.dy -
                 renderBoxSize.height;
 
-            final showOnTop =
-                availableHeight < widget.dropdownDecoration.maxHeight;
-
             final stack = Stack(
               children: [
                 Positioned.fill(
@@ -418,10 +415,8 @@ class _MultiDropdownState<T extends Object> extends State<MultiDropdown<T>> {
                 CompositedTransformFollower(
                   link: _layerLink,
                   showWhenUnlinked: false,
-                  targetAnchor:
-                      showOnTop ? Alignment.topLeft : Alignment.bottomLeft,
-                  followerAnchor:
-                      showOnTop ? Alignment.bottomLeft : Alignment.topLeft,
+                  targetAnchor: Alignment.bottomLeft,
+                  followerAnchor: Alignment.topLeft,
                   offset: widget.dropdownDecoration.marginTop == 0
                       ? Offset.zero
                       : Offset(0, widget.dropdownDecoration.marginTop),

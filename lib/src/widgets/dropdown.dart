@@ -178,10 +178,10 @@ class _Dropdown<T> extends StatelessWidget {
         onTap: () {
           if (option.disabled) return;
 
-          if (singleSelect || !_reachedMaxSelection(option)) {
-            onItemTap(option);
-            return;
-          }
+          // if (singleSelect || !_reachedMaxSelection(option)) {
+          //   onItemTap(option);
+          //   return;
+          // }
         },
       ),
     );
