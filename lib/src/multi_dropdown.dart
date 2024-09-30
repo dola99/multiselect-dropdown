@@ -478,8 +478,7 @@ class _MultiDropdownState<T extends Object> extends State<MultiDropdown<T>> {
 
   void _handleDropdownItemTap(DropdownItem<T> item) {
     if (widget.singleSelect) {
-      _dropdownController.selectedItems.clear();
-      _dropdownController.toggleWhere((element) => element == item);
+      _dropdownController._toggleOnly(item);
     } else {
       _dropdownController.toggleWhere((element) => element == item);
     }
@@ -572,9 +571,9 @@ class _MultiDropdownState<T extends Object> extends State<MultiDropdown<T>> {
 
     final selectedOptions = _dropdownController.selectedItems;
 
-    if (widget.singleSelect) {
-      return Text(selectedOptions.first.label);
-    }
+    // if (widget.singleSelect) {
+    //   return Text(selectedOptions.first.label);
+    // }
 
     return _buildSelectedItems(selectedOptions);
   }
