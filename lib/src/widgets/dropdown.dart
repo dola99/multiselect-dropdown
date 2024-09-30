@@ -94,9 +94,12 @@ class _Dropdown<T> extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               if (searchEnabled)
-                _SearchField(
-                  decoration: searchDecoration,
-                  onChanged: _onSearchChange,
+                ColoredBox(
+                  color: Colors.white,
+                  child: _SearchField(
+                    decoration: searchDecoration,
+                    onChanged: _onSearchChange,
+                  ),
                 ),
               if (decoration.header != null)
                 Flexible(child: decoration.header!),
