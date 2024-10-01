@@ -104,6 +104,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           runSpacing: 2,
                           spacing: 10,
                         ),
+                        singleSelect: true,
                         fieldDecoration: FieldDecoration(
                           hintText: 'Countries',
                           hintStyle: const TextStyle(color: Colors.black87),
