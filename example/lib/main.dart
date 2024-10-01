@@ -91,6 +91,12 @@ class _MyHomePageState extends State<MyHomePage> {
                         items: items,
                         controller: controller,
                         enabled: true,
+                        onDropdownClosed: () {
+                          print('Dropdown closed');
+                        },
+                        onDropdownOpened: () {
+                          print('Dropdown opened');
+                        },
                         searchEnabled: true,
                         chipDecoration: const ChipDecoration(
                           backgroundColor: Colors.yellow,

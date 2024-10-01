@@ -104,6 +104,8 @@ class MultiDropdown<T extends Object> extends StatefulWidget {
     this.selectedItemBuilder,
     this.focusNode,
     this.onSelectionChange,
+    this.onDropdownOpened,
+    this.onDropdownClosed,
     this.onSearchChange,
     this.closeOnBackButton = false,
     Key? key,
@@ -142,6 +144,8 @@ class MultiDropdown<T extends Object> extends StatefulWidget {
     this.autovalidateMode = AutovalidateMode.disabled,
     this.singleSelect = false,
     this.itemSeparator,
+    this.onDropdownOpened, // Add callback for opening
+    this.onDropdownClosed,
     this.controller,
     this.validator,
     this.itemBuilder,
@@ -163,6 +167,9 @@ class MultiDropdown<T extends Object> extends StatefulWidget {
 
   /// The selection type of the dropdown.
   final bool singleSelect;
+
+  final VoidCallback? onDropdownOpened;
+  final VoidCallback? onDropdownClosed;
 
   /// The configuration for the chips.
   final ChipDecoration chipDecoration;
@@ -327,12 +334,15 @@ class _MultiDropdownState<T extends Object> extends State<MultiDropdown<T>> {
   }
 
   void _controllerListener() {
-    // update the form field state when the controller changes
+    // Update the form field state when the controller changes
     _formFieldKey.currentState?.didChange(_dropdownController.selectedItems);
 
+    // Notify the appropriate callback about the dropdown state
     if (_dropdownController.isOpen) {
+      widget.onDropdownOpened?.call(); // Call the open callback
       _portalController.show();
     } else {
+      widget.onDropdownClosed?.call(); // Call the close callback
       _dropdownController._clearSearchQuery();
       _portalController.hide();
     }
